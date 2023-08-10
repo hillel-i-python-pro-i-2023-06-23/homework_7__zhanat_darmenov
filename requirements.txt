@@ -1,0 +1,24 @@
+
+# Pre-commit hook:
+pre-commit==3.3.3
+
+# Check codestyle:
+flake8==6.0.0
+
+# Formatter. Apply codestyle:
+black==23.7.0
+
+# Upgrade syntax:
+pyupgrade==2.31.1
+
+# Remove unused imports & variables:
+autoflake==2.2.0
+
+# Generate Fake User-info:
+Faker==19.2.0
+
+# Read web_json files:
+requests==2.31.0
+
+# Read web_csv files:
+pandas==2.0.3
