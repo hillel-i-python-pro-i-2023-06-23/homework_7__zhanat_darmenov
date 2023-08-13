@@ -21,7 +21,6 @@ RUN pip install --upgrade pip && \
 
 
 COPY --chown=${USER} app/main.py main.py
-COPY --chown=${USER} app/services services
 
 USER ${USER}
 

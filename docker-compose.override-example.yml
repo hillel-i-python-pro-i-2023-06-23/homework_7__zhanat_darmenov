@@ -5,4 +5,3 @@ services:
   app:
     volumes:
       - ./files_input:/wd/files_input:ro
-      - ./files_input:/lorem_ipsum

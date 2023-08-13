@@ -1,4 +1,3 @@
-
 import random
 from dataclasses import dataclass, field
 from typing import TypeAlias, TypedDict
@@ -33,9 +32,7 @@ class DataProvider:
             group=group_name,
         )
 
-    def _generate_humans(
-        self, groups: T_GROUP_NAMES, amount_of_humans: int
-    ) -> T_HUMANS:
+    def _generate_humans(self, groups: T_GROUP_NAMES, amount_of_humans: int) -> T_HUMANS:
         members = []
         for _ in range(amount_of_humans):
             group_name = random.choice(groups)
@@ -64,17 +61,16 @@ def organize_data(humans: T_HUMANS):
 
     # Iterate through the data and populate the group_info dictionary:
     for each in humans:
-        group_name = each['group']
+        group_name = each["group"]
         if group_name not in group_info:
-            group_info[group_name] = {'users': 0, 'names': []}
-        group_info[group_name]['users'] += 1
-        group_info[group_name]['names'].append(each['name'])
+            group_info[group_name] = {"users": 0, "names": []}
+        group_info[group_name]["users"] += 1
+        group_info[group_name]["names"].append(each["name"])
 
     return group_info
 
 
 def get_formatted_output(data) -> str:
-
     # Print the group information:
     for group_name, info in data.items():
         print(f"Group: {group_name}")
