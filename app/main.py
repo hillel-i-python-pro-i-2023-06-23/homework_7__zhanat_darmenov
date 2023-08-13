@@ -57,18 +57,30 @@ class DataProvider:
 
 
 def organize_data(humans: T_HUMANS):
-    """
-    Organize data in way, useful for further processing.
-    At this stage not allowed to make output string.
-    """
-    ...
+    # Will receive List of Dictionaries with single Name & single Company in each
+
+    # Create a dictionary to store group information:
+    group_info = {}
+
+    # Iterate through the data and populate the group_info dictionary:
+    for each in humans:
+        group_name = each['group']
+        if group_name not in group_info:
+            group_info[group_name] = {'users': 0, 'names': []}
+        group_info[group_name]['users'] += 1
+        group_info[group_name]['names'].append(each['name'])
+
+    return group_info
 
 
 def get_formatted_output(data) -> str:
-    """
-    Get output string. That can be used to print in console.
-    """
-    ...
+
+    # Print the group information:
+    for group_name, info in data.items():
+        print(f"Group: {group_name}")
+        print(f"Number of Users: {info['users']}")
+        print(f"Names: {', '.join(info['names'])}")
+        print()
 
 
 def main():
@@ -76,10 +88,12 @@ def main():
     You have a list of humans. Every human have "name" and "group".
     Your task is to show all groups, with amount and names of members of each group.
     """
+    # Creates Random amount of Companies-groups & random amount of ppl in it:
     group_members = DataProvider().generate_group_members()
+
     organized_data = organize_data(humans=group_members)
-    output = get_formatted_output(data=organized_data)
-    print(output)
+
+    get_formatted_output(data=organized_data)
 
 
 if __name__ == "__main__":
